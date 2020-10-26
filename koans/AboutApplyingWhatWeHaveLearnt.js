@@ -40,7 +40,9 @@ describe('About Applying What We Have Learnt', function() {
     var productsICanEat = [];
 
     /* solve using filter() & all() / any() */
-    productsICanEat = _(products).filter( product => _(product.ingredients).all(ingredient => ingredient !== 'mushrooms') && !product.containsNuts);
+    productsICanEat = _.filter(products, product =>
+      _.all(product.ingredients, ingredient => ingredient !== 'mushrooms')
+      && !product.containsNuts);
 
     expect(productsICanEat.length).toBe(1);
   });
@@ -62,11 +64,11 @@ describe('About Applying What We Have Learnt', function() {
   it('should add all the natural numbers below 1000 that are multiples of 3 or 5 (functional)', function () {
     /* try chaining range() and reduce() */
     var sum = _.chain(_.range(1, 1000))
-      .reduce((acc, n) => {
+      .reduce((sum, n) => {
         if (n % 3 === 0 || n % 5 === 0) {
-          acc += n;
+          sum += n;
         }
-        return acc;
+        return sum;
       }, 0)
       .value();
 
@@ -90,16 +92,16 @@ describe('About Applying What We Have Learnt', function() {
     var ingredientCount = { '{ingredient name}': 0 };
 
     /* chain() together map(), flatten() and reduce() */
-    ingredientCount = _(products).chain()
+    ingredientCount = _.chain(products)
       .map(product => product.ingredients)
       .flatten()
-      .reduce(function(allNames, name) {
-        if (name in allNames) {
-          allNames[name]++;
+      .reduce((allIngredients, ingredient) => {
+        if (ingredient in allIngredients) {
+          allIngredients[ingredient]++;
         } else {
-          allNames[name] = 1;
+          allIngredients[ingredient] = 1;
         }
-        return allNames;
+        return allIngredients;
       }, {})
       .value();
 
