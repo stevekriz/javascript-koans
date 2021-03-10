@@ -1,23 +1,26 @@
-describe('About Functions', function() {
-
-  it('should declare functions', function() {
-
-    var add = function(a, b) {
+/* eslint-disable func-names */
+/* eslint-disable prefer-rest-params */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-shadow */
+/* eslint-disable no-undef */
+describe('About Functions', () => {
+  it('should declare functions', () => {
+    const add = function (a, b) {
       return a + b;
     };
 
     expect(add(1, 2)).toBe(3);
   });
 
-  it('should know internal variables override outer variables', function () {
-    var message = 'Outer';
+  it('should know internal variables override outer variables', () => {
+    const message = 'Outer';
 
-    var getMessage = function() {
+    const getMessage = function () {
       return message;
     };
 
-    var overrideMessage = function() {
-      var message = 'Inner';
+    const overrideMessage = function () {
+      const message = 'Inner';
 
       return message;
     };
@@ -27,13 +30,13 @@ describe('About Functions', function() {
     expect(message).toBe('Outer');
   });
 
-  it('should have lexical scoping', function() {
-    var variable = 'top-level';
+  it('should have lexical scoping', () => {
+    const variable = 'top-level';
 
-    var parentfunction = function() {
-      var variable = 'local';
+    const parentfunction = function () {
+      const variable = 'local';
 
-      var childfunction = function() {
+      const childfunction = function () {
         return variable;
       };
       return childfunction();
@@ -41,38 +44,36 @@ describe('About Functions', function() {
     expect(parentfunction()).toBe('local');
   });
 
-  it('should use lexical scoping to synthesise functions', function() {
-
-    var makeIncreaseByFunction = function (increaseByAmount) {
-      return function(numberToIncrease) {
+  it('should use lexical scoping to synthesise functions', () => {
+    const makeIncreaseByFunction = function (increaseByAmount) {
+      return function (numberToIncrease) {
         return numberToIncrease + increaseByAmount;
       };
     };
 
-    var increaseBy3 = makeIncreaseByFunction(3);
-    var increaseBy5 = makeIncreaseByFunction(5);
+    const increaseBy3 = makeIncreaseByFunction(3);
+    const increaseBy5 = makeIncreaseByFunction(5);
 
     expect(increaseBy3(10) + increaseBy5(10)).toBe(28);
   });
 
-  it('should allow extra function arguments', function() {
-
-    var returnFirstArg = function(firstArg) {
+  it('should allow extra function arguments', () => {
+    const returnFirstArg = function (firstArg) {
       return firstArg;
     };
 
     expect(returnFirstArg('first', 'second', 'third')).toBe('first');
 
-    var returnSecondArg = function(firstArg, secondArg) {
+    const returnSecondArg = function (firstArg, secondArg) {
       return secondArg;
     };
 
     expect(returnSecondArg('only give first arg')).toBe(undefined);
 
-    var returnAllArgs = function() {
-      var argsArray = [];
+    const returnAllArgs = function () {
+      const argsArray = [];
 
-      for (var i = 0; i < arguments.length; i += 1) {
+      for (let i = 0; i < arguments.length; i += 1) {
         argsArray.push(arguments[i]);
       }
       return argsArray.join(',');
@@ -81,20 +82,19 @@ describe('About Functions', function() {
     expect(returnAllArgs('first', 'second', 'third')).toBe('first,second,third');
   });
 
-  it('should pass functions as values', function() {
-    var appendRules = function(name) {
-      return name + ' rules!';
+  it('should pass functions as values', () => {
+    const appendRules = function (name) {
+      return `${name} rules!`;
     };
 
-    var appendDoubleRules = function(name) {
-      return name + ' totally rules!';
+    const appendDoubleRules = function (name) {
+      return `${name} totally rules!`;
     };
 
-    var praiseSinger = { givePraise: appendRules };
+    const praiseSinger = { givePraise: appendRules };
     expect(praiseSinger.givePraise('John')).toBe('John rules!');
 
     praiseSinger.givePraise = appendDoubleRules;
     expect(praiseSinger.givePraise('Mary')).toBe('Mary totally rules!');
-
   });
 });
