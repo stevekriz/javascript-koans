@@ -1,8 +1,8 @@
 {
-  "name": "javascript-koans",
+  "name": "javascriptkoans",
   "version": "1.0.0",
-  "description": "This is a project I completed as a student at [hackreactor](http://hackreactor.com). This project was worked on with a pair.",
-  "main": ".eslintrc.js",
+  "description": "",
+  "main": "index.js",
   "directories": {
     "lib": "lib"
   },
@@ -11,20 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stevekriz/javascript-koans.git"
+    "url": "git+https://github.com/stevekriz/javascriptkoans.git"
   },
   "author": "Steve Kriz",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/stevekriz/javascript-koans/issues"
+    "url": "https://github.com/stevekriz/javascriptkoans/issues"
   },
-  "homepage": "https://github.com/stevekriz/javascript-koans#readme",
-  "devDependencies": {
-    "eslint": "^7.21.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.22.1"
-  },
+  "homepage": "https://github.com/stevekriz/javascriptkoans#readme",
   "dependencies": {
-    "underscore": "^1.12.0"
+    "underscore": "^1.12.1"
   }
 }

@@ -1,12 +1,9 @@
-/* eslint-disable func-names */
-/* eslint-disable no-extend-native */
-/* eslint-disable no-undef */
 const Muppet = function (age, hobby) {
   this.age = age;
   this.hobby = hobby;
 
   this.answerNanny = function () {
-    return 'Everything\'s cool!';
+    return "Everything's cool!";
   };
 };
 
@@ -15,37 +12,36 @@ const SwedishChef = function (age, hobby, mood) {
   this.mood = mood;
 
   this.cook = function () {
-    return 'Mmmm soup!';
+    return "Mmmm soup!";
   };
 };
 
 SwedishChef.prototype = new Muppet();
 
-describe('About inheritance', () => {
+describe("About inheritance", () => {
   beforeEach(function () {
-    this.muppet = new Muppet(2, 'coding');
-    this.swedishChef = new SwedishChef(2, 'cooking', 'chillin');
+    this.muppet = new Muppet(2, "coding");
+    this.swedishChef = new SwedishChef(2, "cooking", "chillin");
   });
 
-  it('should be able to call a method on the derived object', function () {
-    expect(this.swedishChef.cook()).toEqual('Mmmm soup!');
+  it("should be able to call a method on the derived object", function () {
+    expect(this.swedishChef.cook()).toEqual("Mmmm soup!");
   });
 
-  it('should be able to call a method on the base object', function () {
-    expect(this.swedishChef.answerNanny()).toEqual('Everything\'s cool!');
+  it("should be able to call a method on the base object", function () {
+    expect(this.swedishChef.answerNanny()).toEqual("Everything's cool!");
   });
 
-  it('should set constructor parameters on the base object', function () {
+  it("should set constructor parameters on the base object", function () {
     expect(this.swedishChef.age).toEqual(2);
-    expect(this.swedishChef.hobby).toEqual('cooking');
+    expect(this.swedishChef.hobby).toEqual("cooking");
   });
 
-  it('should set constructor parameters on the derived object', function () {
-    expect(this.swedishChef.mood).toEqual('chillin');
+  it("should set constructor parameters on the derived object", function () {
+    expect(this.swedishChef.mood).toEqual("chillin");
   });
 });
 
-// http://javascript.crockford.com/prototypal.html
 Object.prototype.beget = function () {
   const F = function () {};
   F.prototype = this;
@@ -61,32 +57,27 @@ const Gonzo = function (age, hobby, trick) {
   };
 };
 
-// no longer need to call the Muppet (base type) constructor
 Gonzo.prototype = Muppet.prototype.beget();
-// note: if you're wondering how this line affects the below tests, the answer is that it doesn't.
-// however, it does do something interesting -- it makes this work:
-// var g = new Gonzo(...);
-// g instanceOf Muppet // true
 
-describe('About Crockford\'s inheritance improvement', () => {
+describe("About Crockford's inheritance improvement", () => {
   beforeEach(function () {
-    this.gonzo = new Gonzo(3, 'daredevil performer', 'eat a tire');
+    this.gonzo = new Gonzo(3, "daredevil performer", "eat a tire");
   });
 
-  it('should be able to call a method on the derived object', function () {
-    expect(this.gonzo.doTrick()).toEqual('eat a tire');
+  it("should be able to call a method on the derived object", function () {
+    expect(this.gonzo.doTrick()).toEqual("eat a tire");
   });
 
-  it('should be able to call a method on the base object', function () {
-    expect(this.gonzo.answerNanny()).toEqual('Everything\'s cool!');
+  it("should be able to call a method on the base object", function () {
+    expect(this.gonzo.answerNanny()).toEqual("Everything's cool!");
   });
 
-  it('should set constructor parameters on the base object', function () {
+  it("should set constructor parameters on the base object", function () {
     expect(this.gonzo.age).toEqual(3);
-    expect(this.gonzo.hobby).toEqual('daredevil performer');
+    expect(this.gonzo.hobby).toEqual("daredevil performer");
   });
 
-  it('should set constructor parameters on the derived object', function () {
-    expect(this.gonzo.trick).toEqual('eat a tire');
+  it("should set constructor parameters on the derived object", function () {
+    expect(this.gonzo.trick).toEqual("eat a tire");
   });
 });

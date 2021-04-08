@@ -1,12 +1,11 @@
-/* eslint-disable no-undef */
-describe('About Expects', () => {
+describe("About Expects", () => {
   // We shall contemplate truth by testing reality, via spec expectations.
-  it('should expect true', () => {
+  it("should expect true", () => {
     expect(true).toBeTruthy(); // This should be true
   });
 
   // To understand reality, we must compare our expectations against reality.
-  it('should expect equality', () => {
+  it("should expect equality", () => {
     const expectedValue = 2;
     const actualValue = 1 + 1;
 
@@ -14,7 +13,7 @@ describe('About Expects', () => {
   });
 
   // Some ways of asserting equality are better than others.
-  it('should assert equality a better way', () => {
+  it("should assert equality a better way", () => {
     const expectedValue = 2;
     const actualValue = 1 + 1;
 
@@ -23,8 +22,8 @@ describe('About Expects', () => {
   });
 
   // Sometimes you need to be precise about what you "type".
-  it('should assert equality with ===', () => {
-    const expectedValue = '2';
+  it("should assert equality with ===", () => {
+    const expectedValue = "2";
     const actualValue = (1 + 1).toString();
 
     // toBe() will always use === to compare.
@@ -32,7 +31,7 @@ describe('About Expects', () => {
   });
 
   // Sometimes we will ask you to fill in the values.
-  it('should have filled in values', () => {
+  it("should have filled in values", () => {
     expect(1 + 1).toEqual(2);
   });
 });

@@ -1,16 +1,7 @@
-/* eslint-disable func-names */
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable no-undef */
-import _ from 'underscore'; // globals
+import _ from "underscore";
 
-/* This section uses a functional extension known as Underscore.js - https://underscorejs.org/
- * 'Underscore is a utility-belt library for JavaScript that provides a lot of the functional
- * programming support that you would expect in Prototype.js (or Ruby), but without extending any of
- * the built-in JavaScript objects.
- * It's the tie to go along with jQuery's tux.'
- */
-describe('About Higher Order Functions', () => {
-  it('should use filter to return array items that meet a criteria', () => {
+describe("About Higher Order Functions", () => {
+  it("should use filter to return array items that meet a criteria", () => {
     const numbers = [1, 2, 3];
     const odd = _(numbers).filter((x) => x % 2 !== 0);
 
@@ -29,12 +20,7 @@ describe('About Higher Order Functions', () => {
 
   it('should use "reduce" to update the same result on each iteration', () => {
     const numbers = [1, 2, 3];
-    const reduction = _(numbers).reduce(
-      (memo, x) =>
-        // note: memo is the result from last call, and x is the current number
-        memo + x,
-      /* initial */ 0,
-    );
+    const reduction = _(numbers).reduce((memo, x) => memo + x, 0);
 
     expect(reduction).toBe(6);
     expect(numbers).toEqual([1, 2, 3]);
@@ -42,14 +28,14 @@ describe('About Higher Order Functions', () => {
 
   it('should use "forEach" for simple iteration', () => {
     const numbers = [1, 2, 3];
-    let msg = '';
+    let msg = "";
     const isEven = function (item) {
-      msg += (item % 2) === 0;
+      msg += item % 2 === 0;
     };
 
     _(numbers).forEach(isEven);
 
-    expect(msg).toEqual('falsetruefalse');
+    expect(msg).toEqual("falsetruefalse");
     expect(numbers).toEqual([1, 2, 3]);
   });
 
@@ -57,7 +43,9 @@ describe('About Higher Order Functions', () => {
     const onlyEven = [2, 4, 6];
     const mixedBag = [2, 4, 5, 6];
 
-    const isEven = function (x) { return x % 2 === 0; };
+    const isEven = function (x) {
+      return x % 2 === 0;
+    };
 
     expect(_(onlyEven).all(isEven)).toBe(true);
     expect(_(mixedBag).all(isEven)).toBe(false);
@@ -67,24 +55,32 @@ describe('About Higher Order Functions', () => {
     const onlyEven = [2, 4, 6];
     const mixedBag = [2, 4, 5, 6];
 
-    const isEven = function (x) { return x % 2 === 0; };
+    const isEven = function (x) {
+      return x % 2 === 0;
+    };
 
     expect(_(onlyEven).any(isEven)).toBe(true);
     expect(_(mixedBag).any(isEven)).toBe(true);
   });
 
-  it('should use range to generate an array', () => {
+  it("should use range to generate an array", () => {
     expect(_.range(3)).toEqual([0, 1, 2]);
     expect(_.range(1, 4)).toEqual([1, 2, 3]);
     expect(_.range(0, -4, -1)).toEqual([0, -1, -2, -3]);
   });
 
-  it('should use flatten to make nested arrays easy to work with', () => {
-    expect(_([[1, 2], [3, 4]]).flatten()).toEqual([1, 2, 3, 4]);
+  it("should use flatten to make nested arrays easy to work with", () => {
+    expect(
+      _([
+        [1, 2],
+        [3, 4],
+      ]).flatten()
+    ).toEqual([1, 2, 3, 4]);
   });
 
-  it('should use chain() ... .value() to use multiple higher order functions', () => {
-    const result = _([[0, 1], 2]).chain()
+  it("should use chain() ... .value() to use multiple higher order functions", () => {
+    const result = _([[0, 1], 2])
+      .chain()
       .flatten()
       .map((x) => x + 1)
       .reduce((sum, x) => sum + x)
