@@ -3,7 +3,7 @@ import _ from "underscore";
 describe("About Higher Order Functions", () => {
   it("should use filter to return array items that meet a criteria", () => {
     const numbers = [1, 2, 3];
-    const odd = _(numbers).filter((x) => x % 2 !== 0);
+    const odd = _(numbers).filter(x => x % 2 !== 0);
 
     expect(odd).toEqual([1, 3]);
     expect(odd.length).toBe(2);
@@ -12,7 +12,7 @@ describe("About Higher Order Functions", () => {
 
   it('should use "map" to transform each element', () => {
     const numbers = [1, 2, 3];
-    const numbersPlus1 = _(numbers).map((x) => x + 1);
+    const numbersPlus1 = _(numbers).map(x => x + 1);
 
     expect(numbersPlus1).toEqual([2, 3, 4]);
     expect(numbers).toEqual([1, 2, 3]);
@@ -82,7 +82,7 @@ describe("About Higher Order Functions", () => {
     const result = _([[0, 1], 2])
       .chain()
       .flatten()
-      .map((x) => x + 1)
+      .map(x => x + 1)
       .reduce((sum, x) => sum + x)
       .value();
 
