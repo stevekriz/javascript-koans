@@ -1,5 +1,5 @@
-describe("About Functions", () => {
-  it("should declare functions", () => {
+describe('About Functions', () => {
+  it('should declare functions', () => {
     const add = function (a, b) {
       return a + b;
     };
@@ -7,39 +7,39 @@ describe("About Functions", () => {
     expect(add(1, 2)).toBe(3);
   });
 
-  it("should know internal variables override outer variables", () => {
-    const message = "Outer";
+  it('should know internal variables override outer variables', () => {
+    const message = 'Outer';
 
     const getMessage = function () {
       return message;
     };
 
     const overrideMessage = function () {
-      const message = "Inner";
+      const message = 'Inner';
 
       return message;
     };
 
-    expect(getMessage()).toBe("Outer");
-    expect(overrideMessage()).toBe("Inner");
-    expect(message).toBe("Outer");
+    expect(getMessage()).toBe('Outer');
+    expect(overrideMessage()).toBe('Inner');
+    expect(message).toBe('Outer');
   });
 
-  it("should have lexical scoping", () => {
-    const variable = "top-level";
+  it('should have lexical scoping', () => {
+    const variable = 'top-level';
 
     const parentfunction = function () {
-      const variable = "local";
+      const variable = 'local';
 
       const childfunction = function () {
         return variable;
       };
       return childfunction();
     };
-    expect(parentfunction()).toBe("local");
+    expect(parentfunction()).toBe('local');
   });
 
-  it("should use lexical scoping to synthesise functions", () => {
+  it('should use lexical scoping to synthesise functions', () => {
     const makeIncreaseByFunction = function (increaseByAmount) {
       return function (numberToIncrease) {
         return numberToIncrease + increaseByAmount;
@@ -52,18 +52,18 @@ describe("About Functions", () => {
     expect(increaseBy3(10) + increaseBy5(10)).toBe(28);
   });
 
-  it("should allow extra function arguments", () => {
+  it('should allow extra function arguments', () => {
     const returnFirstArg = function (firstArg) {
       return firstArg;
     };
 
-    expect(returnFirstArg("first", "second", "third")).toBe("first");
+    expect(returnFirstArg('first', 'second', 'third')).toBe('first');
 
     const returnSecondArg = function (firstArg, secondArg) {
       return secondArg;
     };
 
-    expect(returnSecondArg("only give first arg")).toBe(undefined);
+    expect(returnSecondArg('only give first arg')).toBe(undefined);
 
     const returnAllArgs = function () {
       const argsArray = [];
@@ -71,15 +71,15 @@ describe("About Functions", () => {
       for (let i = 0; i < arguments.length; i += 1) {
         argsArray.push(arguments[i]);
       }
-      return argsArray.join(",");
+      return argsArray.join(',');
     };
 
-    expect(returnAllArgs("first", "second", "third")).toBe(
-      "first,second,third"
+    expect(returnAllArgs('first', 'second', 'third')).toBe(
+      'first,second,third'
     );
   });
 
-  it("should pass functions as values", () => {
+  it('should pass functions as values', () => {
     const appendRules = function (name) {
       return `${name} rules!`;
     };
@@ -89,9 +89,9 @@ describe("About Functions", () => {
     };
 
     const praiseSinger = { givePraise: appendRules };
-    expect(praiseSinger.givePraise("John")).toBe("John rules!");
+    expect(praiseSinger.givePraise('John')).toBe('John rules!');
 
     praiseSinger.givePraise = appendDoubleRules;
-    expect(praiseSinger.givePraise("Mary")).toBe("Mary totally rules!");
+    expect(praiseSinger.givePraise('Mary')).toBe('Mary totally rules!');
   });
 });

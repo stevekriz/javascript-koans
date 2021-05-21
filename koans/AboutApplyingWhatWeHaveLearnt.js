@@ -1,33 +1,33 @@
-import _ from "underscore";
+import _ from 'underscore';
 
-describe("About Applying What We Have Learnt", () => {
+describe('About Applying What We Have Learnt', () => {
   let products;
 
   beforeEach(() => {
     products = [
       {
-        name: "Sonoma",
-        ingredients: ["artichoke", "sundried tomatoes", "mushrooms"],
+        name: 'Sonoma',
+        ingredients: ['artichoke', 'sundried tomatoes', 'mushrooms'],
         containsNuts: false,
       },
       {
-        name: "Pizza Primavera",
-        ingredients: ["roma", "sundried tomatoes", "goats cheese", "rosemary"],
+        name: 'Pizza Primavera',
+        ingredients: ['roma', 'sundried tomatoes', 'goats cheese', 'rosemary'],
         containsNuts: false,
       },
       {
-        name: "South Of The Border",
-        ingredients: ["black beans", "jalapenos", "mushrooms"],
+        name: 'South Of The Border',
+        ingredients: ['black beans', 'jalapenos', 'mushrooms'],
         containsNuts: false,
       },
       {
-        name: "Blue Moon",
-        ingredients: ["blue cheese", "garlic", "walnuts"],
+        name: 'Blue Moon',
+        ingredients: ['blue cheese', 'garlic', 'walnuts'],
         containsNuts: true,
       },
       {
-        name: "Taste Of Athens",
-        ingredients: ["spinach", "kalamata olives", "sesame seeds"],
+        name: 'Taste Of Athens',
+        ingredients: ['spinach', 'kalamata olives', 'sesame seeds'],
         containsNuts: true,
       },
     ];
@@ -45,7 +45,7 @@ describe("About Applying What We Have Learnt", () => {
       if (products[i].containsNuts === false) {
         hasMushrooms = false;
         for (j = 0; j < products[i].ingredients.length; j++)
-          if (products[i].ingredients[j] === "mushrooms") hasMushrooms = true;
+          if (products[i].ingredients[j] === 'mushrooms') hasMushrooms = true;
 
         if (!hasMushrooms) productsICanEat.push(products[i]);
       }
@@ -60,7 +60,7 @@ describe("About Applying What We Have Learnt", () => {
     productsICanEat = _.filter(
       products,
       product =>
-        _.all(product.ingredients, ingredient => ingredient !== "mushrooms") &&
+        _.all(product.ingredients, ingredient => ingredient !== 'mushrooms') &&
         !product.containsNuts
     );
 
@@ -69,7 +69,7 @@ describe("About Applying What We Have Learnt", () => {
 
   /** ****************************************************************************** */
 
-  it("should add all the natural numbers below 1000 that are multiples of 3 or 5 (imperative)", () => {
+  it('should add all the natural numbers below 1000 that are multiples of 3 or 5 (imperative)', () => {
     let sum = 0;
 
     for (let i = 1; i < 1000; i++) {
@@ -81,7 +81,7 @@ describe("About Applying What We Have Learnt", () => {
     expect(sum).toBe(233168);
   });
 
-  it("should add all the natural numbers below 1000 that are multiples of 3 or 5 (functional)", () => {
+  it('should add all the natural numbers below 1000 that are multiples of 3 or 5 (functional)', () => {
     const sum = _.chain(_.range(1, 1000))
       .reduce((sum, n) => {
         if (n % 3 === 0 || n % 5 === 0) {
@@ -95,8 +95,8 @@ describe("About Applying What We Have Learnt", () => {
   });
 
   /** ****************************************************************************** */
-  it("should count the ingredient occurrence (imperative)", () => {
-    const ingredientCount = { "{ingredient name}": 0 };
+  it('should count the ingredient occurrence (imperative)', () => {
+    const ingredientCount = { '{ingredient name}': 0 };
 
     for (i = 0; i < products.length; i++) {
       for (j = 0; j < products[i].ingredients.length; j++) {
@@ -108,8 +108,8 @@ describe("About Applying What We Have Learnt", () => {
     expect(ingredientCount.mushrooms).toBe(2);
   });
 
-  it("should count the ingredient occurrence (functional)", () => {
-    let ingredientCount = { "{ingredient name}": 0 };
+  it('should count the ingredient occurrence (functional)', () => {
+    let ingredientCount = { '{ingredient name}': 0 };
 
     ingredientCount = _.chain(products)
       .map(product => product.ingredients)

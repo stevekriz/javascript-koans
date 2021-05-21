@@ -1,5 +1,5 @@
 body {
-  font-family: "Helvetica Neue Light", "Lucida Grande", "Calibri", "Arial",
+  font-family: 'Helvetica Neue Light', 'Lucida Grande', 'Calibri', 'Arial',
     sans-serif;
 }
 
@@ -106,7 +106,7 @@ h1 {
 }
 
 .errorMessage {
-  font-family: "Menlo", "Monaco", "Andale Mono", "Courier New", "Courier",
+  font-family: 'Menlo', 'Monaco', 'Andale Mono', 'Courier New', 'Courier',
     sans-serif;
   color: #055;
   white-space: pre;

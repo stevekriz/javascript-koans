@@ -1,7 +1,7 @@
-import _ from "underscore";
+import _ from 'underscore';
 
-describe("About Higher Order Functions", () => {
-  it("should use filter to return array items that meet a criteria", () => {
+describe('About Higher Order Functions', () => {
+  it('should use filter to return array items that meet a criteria', () => {
     const numbers = [1, 2, 3];
     const odd = _(numbers).filter(x => x % 2 !== 0);
 
@@ -28,14 +28,14 @@ describe("About Higher Order Functions", () => {
 
   it('should use "forEach" for simple iteration', () => {
     const numbers = [1, 2, 3];
-    let msg = "";
+    let msg = '';
     const isEven = function (item) {
       msg += item % 2 === 0;
     };
 
     _(numbers).forEach(isEven);
 
-    expect(msg).toEqual("falsetruefalse");
+    expect(msg).toEqual('falsetruefalse');
     expect(numbers).toEqual([1, 2, 3]);
   });
 
@@ -63,13 +63,13 @@ describe("About Higher Order Functions", () => {
     expect(_(mixedBag).any(isEven)).toBe(true);
   });
 
-  it("should use range to generate an array", () => {
+  it('should use range to generate an array', () => {
     expect(_.range(3)).toEqual([0, 1, 2]);
     expect(_.range(1, 4)).toEqual([1, 2, 3]);
     expect(_.range(0, -4, -1)).toEqual([0, -1, -2, -3]);
   });
 
-  it("should use flatten to make nested arrays easy to work with", () => {
+  it('should use flatten to make nested arrays easy to work with', () => {
     expect(
       _([
         [1, 2],
@@ -78,7 +78,7 @@ describe("About Higher Order Functions", () => {
     ).toEqual([1, 2, 3, 4]);
   });
 
-  it("should use chain() ... .value() to use multiple higher order functions", () => {
+  it('should use chain() ... .value() to use multiple higher order functions', () => {
     const result = _([[0, 1], 2])
       .chain()
       .flatten()
