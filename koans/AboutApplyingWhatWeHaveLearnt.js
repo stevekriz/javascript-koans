@@ -59,9 +59,11 @@ describe('About Applying What We Have Learnt', () => {
 
     productsICanEat = _.filter(
       products,
-      product =>
-        _.all(product.ingredients, ingredient => ingredient !== 'mushrooms') &&
-        !product.containsNuts
+      (product) =>
+        _.all(
+          product.ingredients,
+          (ingredient) => ingredient !== 'mushrooms'
+        ) && !product.containsNuts
     );
 
     expect(productsICanEat.length).toBe(1);
@@ -112,7 +114,7 @@ describe('About Applying What We Have Learnt', () => {
     let ingredientCount = { '{ingredient name}': 0 };
 
     ingredientCount = _.chain(products)
-      .map(product => product.ingredients)
+      .map((product) => product.ingredients)
       .flatten()
       .reduce((allIngredients, ingredient) => {
         if (ingredient in allIngredients) allIngredients[ingredient]++;
